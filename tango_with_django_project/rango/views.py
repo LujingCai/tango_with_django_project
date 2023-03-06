@@ -21,6 +21,7 @@ class IndexView(View):
         context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
         context_dict['categories'] = category_list
         context_dict['pages'] = page_list
+        context_dict['extra'] = 'From the model solution on GitHub'
         
         visitor_cookie_handler(request)
 
@@ -151,7 +152,7 @@ class GotoView(View):
             return redirect(reverse('rango:index'))
 
         selected_page.views = selected_page.views + 1
-        selected_page.last_visit = timezone.now()
+        #selected_page.last_visit = timezone.now()
         selected_page.save()
 
         return redirect(selected_page.url)
